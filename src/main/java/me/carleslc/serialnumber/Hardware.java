@@ -1,25 +1,21 @@
 package me.carleslc.serialnumber;
 
-import org.apache.commons.lang3.SystemUtils;
+public abstract class Hardware {
 
-public class Hardware {
-
+	private Hardware() {}
+	
 	/**
 	 * Return computer serial number.
 	 * 
 	 * @return Computer's SN
 	 */
 	public static final String getSerialNumber() {
-		if (SystemUtils.IS_OS_WINDOWS) {
-			return Windows.getSerialNumber();
+		switch (OS.get()) {
+			case LINUX: return Linux.getSerialNumber();
+			case MAC_OS: return MacOS.getSerialNumber();
+			case WINDOWS: return Windows.getSerialNumber();
+			default: return null;
 		}
-		if (SystemUtils.IS_OS_LINUX) {
-			return Linux.getSerialNumber();
-		}
-		if (SystemUtils.IS_OS_MAC_OSX) {
-			return MacOS.getSerialNumber();
-		}
-		return null;
 	}
 
 }
