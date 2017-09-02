@@ -24,6 +24,7 @@ hs_err_pid*
 # IDE
 .settings
 .idea
+/target
 
 # MacOS
 .DS_Store
